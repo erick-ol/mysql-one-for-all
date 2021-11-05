@@ -31,7 +31,7 @@ CREATE TABLE albuns(
   alb_name VARCHAR(240) NOT NULL,
   alb_art_id int NOT NULL,
   PRIMARY KEY(alb_id),
-  FOREIGN key(arb_art_id) REFERENCES artists(art_id)
+  FOREIGN key(alb_art_id) REFERENCES artists(art_id)
 ) engine = InnoDB;
 
 CREATE TABLE songs(
@@ -42,7 +42,7 @@ CREATE TABLE songs(
   FOREIGN KEY(son_alb_id) REFERENCES albuns(alb_id)
 ) engine = InnoDB;
 
-CREATE TABLE history(
+CREATE TABLE history_played(
   his_use_id int NOT NULL,
   his_son_id int NOT NULL,
   PRIMARY KEY(his_use_id, his_son_id),
@@ -54,8 +54,8 @@ CREATE TABLE followed(
   fol_use_id int NOT NULL,
   fol_art_id int NOT NULL,
   PRIMARY KEY(fol_use_id, fol_art_id),
-  FOREIGN KEY(fol_use_id) REFERENCES users(fol_use_id),
-  FOREIGN KEY(fol_art_id) REFERENCES artists(fol_art_id)
+  FOREIGN KEY(fol_use_id) REFERENCES users(use_id),
+  FOREIGN KEY(fol_art_id) REFERENCES artists(art_id)
 ) engine = InnoDB;
 
 INSERT INTO
@@ -113,7 +113,7 @@ VALUES
   ("Without My Streets", 5);
 
 INSERT INTO
-  history (his_use_id, his_son_id)
+  history_played (his_use_id, his_son_id)
 VALUES
   (1, 1),
   (1, 6),
