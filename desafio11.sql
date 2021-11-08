@@ -1,6 +1,6 @@
 CREATE VIEW cancoes_premium AS
 SELECT
-  s.title AS nome,
+  son_name AS nome,
   COUNT(*) AS reproducoes
 FROM
   history_played AS h
